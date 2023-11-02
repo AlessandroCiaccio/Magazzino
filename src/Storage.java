@@ -19,9 +19,28 @@ public class Storage {
             System.out.println("No products in storage.");
             return;
         }
-        
+
         System.out.println("Products list:");
         for(var values : productsList){
+            System.out.println(values);
+        }
+    }
+
+    public void searchByType(ProductType type)
+    {
+        var productsByTypeList = new ArrayList<Product>();
+        for(var values : productsList){
+            if(values.getType() == type) {
+                productsByTypeList.add(values);
+            }
+        }
+        if(productsByTypeList.isEmpty()){
+            System.out.println("No products of type " + type);
+            return;
+        }
+
+        System.out.println("Products of type: " + type);
+        for(var values : productsByTypeList){
             System.out.println(values);
         }
     }
