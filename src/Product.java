@@ -1,4 +1,6 @@
-public class Product {
+interface
+
+class Product {
     private String type;
     private String productor;
     private String model;
@@ -8,9 +10,16 @@ public class Product {
     private float purchasePrice;
     private float sellingPrice;
     private int id;
-    private int quantity;
 
-    public Product(String type, String productor, String model, String description, float display, float memory, float purchasePrice, float sellingPrice, int id, int quantity) {
+    public Product(String type,
+                   String productor,
+                   String model,
+                   String description,
+                   float display,
+                   float memory,
+                   float purchasePrice,
+                   float sellingPrice,
+                   int id) {
         this.type = type;
         this.productor = productor;
         this.model = model;
@@ -20,7 +29,6 @@ public class Product {
         this.purchasePrice = purchasePrice;
         this.sellingPrice = sellingPrice;
         this.id = id;
-        this.quantity = quantity;
     }
 
     public String getType() {
@@ -93,13 +101,5 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 }
