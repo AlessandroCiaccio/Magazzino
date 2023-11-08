@@ -1,6 +1,4 @@
-interface
-
-class Product {
+interface Product {
     private String type;
     private String productor;
     private String model;
