@@ -98,8 +98,7 @@ public class Smartphone implements Product {
     @Override
     public String toString() {
         return "Smartphone{" +
-                "type='" + type + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
+                ", productor='" + productor + '\'' +
                 ", model='" + model + '\'' +
                 ", description='" + description + '\'' +
                 ", display=" + display +
@@ -131,7 +130,7 @@ public class Smartphone implements Product {
         System.out.println("You've entered search by productor. Please enter what productor are you interested in");
         String productor = scanner.nextLine();
         for (Product element : list) {
-            if (element.getManufacturer().equals(productor)) {
+            if (element.getProductor().equals(productor)) {
                 byProductor.add(element);
             }
         }
