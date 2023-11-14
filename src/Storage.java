@@ -13,6 +13,7 @@ public class Storage {
             return;
         }
         productsMap.put(lastID, product);
+        product.setID(lastID);
         ++lastID;
     }
 
