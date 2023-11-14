@@ -1,5 +1,4 @@
-public class Tablet implements Product{
-    private String type;
+public class Tablet implements Product {
     private String productor;
     private String model;
     private String description;
@@ -9,16 +8,14 @@ public class Tablet implements Product{
     private float sellingPrice;
     private int id;
 
-    public Tablet(String type,
-                      String productor,
-                      String model,
-                      String description,
-                      float display,
-                      float memory,
-                      float purchasePrice,
-                      float sellingPrice,
-                      int id) {
-        this.type = type;
+    public Tablet(String productor,
+                  String model,
+                  String description,
+                  float display,
+                  float memory,
+                  float purchasePrice,
+                  float sellingPrice,
+                  int id) {
         this.productor = productor;
         this.model = model;
         this.description = description;
@@ -27,14 +24,6 @@ public class Tablet implements Product{
         this.purchasePrice = purchasePrice;
         this.sellingPrice = sellingPrice;
         this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getProductor() {

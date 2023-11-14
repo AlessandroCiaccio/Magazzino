@@ -1,7 +1,6 @@
 public class Smartphone implements Product {
 
-    private String type;
-    private String manufacturer;
+    private String productor;
     private String model;
     private String description;
     private float display;
@@ -10,8 +9,7 @@ public class Smartphone implements Product {
     private float sellingPrice;
     private int id;
 
-    public Smartphone(String type,
-                      String manufacturer,
+    public Smartphone(String productor,
                       String model,
                       String description,
                       float display,
@@ -19,8 +17,7 @@ public class Smartphone implements Product {
                       float purchasePrice,
                       float sellingPrice,
                       int id) {
-        this.type = type;
-        this.manufacturer = manufacturer;
+        this.productor = productor;
         this.model = model;
         this.description = description;
         this.display = display;
@@ -30,20 +27,12 @@ public class Smartphone implements Product {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getProductor() {
+        return productor;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String productor) {
-        this.manufacturer = productor;
+    public void setProductor(String productor) {
+        this.productor = productor;
     }
 
     public String getModel() {
