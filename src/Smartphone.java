@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Smartphone implements Product {
 
     private String productor;
@@ -90,4 +94,75 @@ public class Smartphone implements Product {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Smartphone{" +
+                "type='" + type + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", description='" + description + '\'' +
+                ", display=" + display +
+                ", memory=" + memory +
+                ", purchasePrice=" + purchasePrice +
+                ", sellingPrice=" + sellingPrice +
+                ", id=" + id +
+                '}';
+    }
+
+
+    public void searchByModel(List<Product> list) {
+        List<Product> byModel = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by model. Please enter what model are you interested in");
+        String model = scanner.nextLine();
+        for (Product element : list) {
+            if (element.getModel().equals(model)) {
+                byModel.add(element);
+            }
+        }
+        System.out.println(byModel);
+    }
+
+
+    public void searchByProductor(List<Product> list) {
+        List<Product> byProductor = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
+        String productor = scanner.nextLine();
+        for (Product element : list) {
+            if (element.getManufacturer().equals(productor)) {
+                byProductor.add(element);
+            }
+        }
+        System.out.println(byProductor);
+    }
+
+
+    public void searchBySellingPrice(List<Product> list) {
+        List<Product> bySellingPrice = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
+        int sellingPrice = scanner.nextInt();
+        for (Product element : list) {
+            if (element.getSellingPrice() == (sellingPrice)) {
+                bySellingPrice.add(element);
+            }
+        }
+        System.out.println(bySellingPrice);
+    }
+
+    public void searchByPurchasePrice(List<Product> list) {
+        List<Product> byPurchasePrice = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
+        int purchasePrice = scanner.nextInt();
+        for (Product element : list) {
+            if (element.getPurchasePrice() == (purchasePrice)) {
+                byPurchasePrice.add(element);
+            }
+        }
+        System.out.println(byPurchasePrice);
+    }
 }
+

@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 public class Tablet implements Product {
+=======
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Tablet implements Product {
+    private String type;
+
     private String productor;
     private String model;
     private String description;
@@ -8,7 +17,12 @@ public class Tablet implements Product {
     private float sellingPrice;
     private int id;
 
+<<<<<<< HEAD
     public Tablet(String productor,
+=======
+    public Tablet(String type,
+                  String productor,
+>>>>>>> feature
                   String model,
                   String description,
                   float display,
@@ -16,6 +30,10 @@ public class Tablet implements Product {
                   float purchasePrice,
                   float sellingPrice,
                   int id) {
+<<<<<<< HEAD
+=======
+        this.type = type;
+>>>>>>> feature
         this.productor = productor;
         this.model = model;
         this.description = description;
@@ -89,4 +107,67 @@ public class Tablet implements Product {
     public void setId(int id) {
         this.id = id;
     }
+<<<<<<< HEAD
 }
+=======
+
+
+    public void searchByProductor(List<Product> list) {
+        List<Product> byProductor = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
+        String productor = scanner.nextLine();
+        for (Product element : list) {
+            if (element.getManufacturer().equals(productor)) {
+                byProductor.add(element);
+            }
+        }
+        System.out.println(byProductor);
+    }
+
+    @Override
+    public String getManufacturer() {
+        return null;
+    }
+
+    public void searchByModel(List<Product> list) {
+        List<Product> byModel = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by model. Please enter what model are you interested in");
+        String model = scanner.nextLine();
+        for (Product element : list) {
+            if (element.getModel().equals(model)) {
+                byModel.add(element);
+            }
+        }
+        System.out.println(byModel);
+    }
+
+    public void searchBySellingPrice(List<Product> list) {
+        List<Product> bySellingPrice = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
+        int sellingPrice = scanner.nextInt();
+        for (Product element : list) {
+            if (element.getSellingPrice() == (sellingPrice)) {
+                bySellingPrice.add(element);
+            }
+        }
+        System.out.println(bySellingPrice);
+    }
+
+    public void searchByPurchasePrice(List<Product> list) {
+        List<Product> byPurchasePrice = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
+        int purchasePrice = scanner.nextInt();
+        for (Product element : list) {
+            if (element.getPurchasePrice() == (purchasePrice)) {
+                byPurchasePrice.add(element);
+            }
+        }
+        System.out.println(byPurchasePrice);
+    }
+}
+
+>>>>>>> feature
