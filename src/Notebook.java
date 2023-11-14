@@ -1,4 +1,8 @@
-public class Notebook implements Product{
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Notebook implements Product {
     private String type;
     private String productor;
     private String model;
@@ -10,14 +14,14 @@ public class Notebook implements Product{
     private int id;
 
     public Notebook(String type,
-                      String productor,
-                      String model,
-                      String description,
-                      float display,
-                      float memory,
-                      float purchasePrice,
-                      float sellingPrice,
-                      int id) {
+                    String productor,
+                    String model,
+                    String description,
+                    float display,
+                    float memory,
+                    float purchasePrice,
+                    float sellingPrice,
+                    int id) {
         this.type = type;
         this.productor = productor;
         this.model = model;
@@ -99,5 +103,37 @@ public class Notebook implements Product{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public void searchByProductor(List<Product> list) {
+        List<Product> byProductor = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
+        String productor = scanner.nextLine();
+        for (Product element : list) {
+            if (element.getManufacturer().equals(productor)) {
+                byProductor.add(element);
+            }
+        }
+        System.out.println(byProductor);
+    }
+
+    @Override
+    public String getManufacturer() {
+        return null;
+    }
+
+    public void searchByModel(List<Product> list) {
+        List <Product> byModel = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by model. Please enter what model are you interested in");
+        String model = scanner.nextLine();
+        for (Product element : list){
+            if(element.getModel().equals(model)){
+                byModel.add(element);
+            }
+        }
+        System.out.println(byModel);
     }
 }

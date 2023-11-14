@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 public class Smartphone implements Product {
 
     private String type;
@@ -101,4 +106,49 @@ public class Smartphone implements Product {
     public void setId(int id) {
         this.id = id;
     }
-}
+
+    @Override
+    public String toString() {
+        return "Smartphone{" +
+                "type='" + type + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", description='" + description + '\'' +
+                ", display=" + display +
+                ", memory=" + memory +
+                ", purchasePrice=" + purchasePrice +
+                ", sellingPrice=" + sellingPrice +
+                ", id=" + id +
+                '}';
+    }
+
+    @Override
+    public void searchByModel(List<Product> list) {
+        List <Product> byModel = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by model. Please enter what model are you interested in");
+        String model = scanner.nextLine();
+        for (Product element : list){
+            if(element.getModel().equals(model)){
+                byModel.add(element);
+            }
+        }
+        System.out.println(byModel);
+    }
+
+
+    @Override
+    public void searchByProductor(List<Product> list) {
+        List <Product> byProductor = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
+        String productor = scanner.nextLine();
+        for (Product element : list){
+            if(element.getManufacturer().equals(productor)){
+                byProductor.add(element);
+            }
+        }
+        System.out.println(byProductor);
+        }
+    }
+
