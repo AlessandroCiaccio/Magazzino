@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-public class Notebook implements Product {
-=======
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Notebook implements Product {
-    private String type;
->>>>>>> feature
     private String productor;
     private String model;
     private String description;
@@ -17,12 +12,8 @@ public class Notebook implements Product {
     private float sellingPrice;
     private int id;
 
-<<<<<<< HEAD
+
     public Notebook(String productor,
-=======
-    public Notebook(String type,
-                    String productor,
->>>>>>> feature
                     String model,
                     String description,
                     float display,
@@ -30,10 +21,6 @@ public class Notebook implements Product {
                     float purchasePrice,
                     float sellingPrice,
                     int id) {
-<<<<<<< HEAD
-=======
-        this.type = type;
->>>>>>> feature
         this.productor = productor;
         this.model = model;
         this.description = description;
@@ -115,16 +102,11 @@ public class Notebook implements Product {
         System.out.println("You've entered search by productor. Please enter what productor are you interested in");
         String productor = scanner.nextLine();
         for (Product element : list) {
-            if (element.getManufacturer().equals(productor)) {
+            if (element.getProductor().equals(productor)) {
                 byProductor.add(element);
             }
         }
         System.out.println(byProductor);
-    }
-
-    @Override
-    public String getManufacturer() {
-        return null;
     }
 
     public void searchByModel(List<Product> list) {
