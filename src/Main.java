@@ -3,7 +3,7 @@ public class Main {
         Menu menu = new Menu();
         Warehouse warehouse = new Warehouse();
         Smartphone smartphone = new Smartphone("Apple",
-                "Iphone 15",
+                "iPhone15",
                 "None",
                 15,
                 10,
