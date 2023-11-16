@@ -12,66 +12,60 @@ public class Warehouse {
 
     public void addProduct(Product product) {
         productsMap.put(lastID, product);
-        //product.setID(lastID);
+        product.setID(lastID);
         ++lastID;
     }
 
-   /* public void printProducts() {
-        if (productsList.isEmpty()) {
+    public Product getProductByID(int id){
+        return productsMap.get(id);
+    }
+
+    public void printProducts() {
+        if (productsMap.isEmpty()) {
             System.out.println("No products in storage.");
             return;
         }
 
-
-
         System.out.println("Products list:");
-        for (var values : productsList) {
+        for (var values : productsMap.values()) {
             System.out.println(values);
         }
-    }*/
+    }
 
-    /*public void searchByType(ProductType type) //return list and "main" takes care of it?
+    static <M,N> Integer countObjects(N obj, Map<M,N> map) {
+        int count = 0;
+        for (var element : map.values()) {
+            if (obj.equals(element)) { //two products, with different ids but same model etc will add to the quantity
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int getQuantityByProduct(Product product) {
+        ProductType productType = product.getType();
+        return countObjects(product, productsMap);
+    }
+
+   public void deleteProductById(int productID) {
+        var product = productsMap.get(productID);
+        if (product == null) {
+            System.out.println("Product not found");
+            return;
+        }
+        productsMap.remove(productID);
+    }
+
+    public ArrayList<Product> searchByType(ProductType type) //return list and "main" takes care of it?
     {
         var productsByTypeList = new ArrayList<Product>();
-        for (var values : productsList) {
+        for (var values : productsMap.values()) {
             if (values.getType() == type) {
                 productsByTypeList.add(values);
             }
         }
-        if (productsByTypeList.isEmpty()) {
-            System.out.println("No products of type " + type);
-            return;
-        }
-
-        System.out.println("Products of type: " + type);
-        for (var values : productsByTypeList) {
-            System.out.println(values);
-        }
-    }*/
-
-    static <T> List<Integer> indexOfAll(T obj, List<T> list) {
-        final List<Integer> indexList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            if (obj.equals(list.get(i))) { //two products, with different ids but same model etc will add to the quantity
-                indexList.add(i);
-            }
-        }
-        return indexList;
+        return productsByTypeList;
     }
-
-    /*public int getQuantityByProduct(Product product) {
-        ProductType = product.getType();
-        var list = indexOfAll(product, productsList);
-        return list.size();
-    }*/
-
-   /* public void deleteProductsById(int productID) {
-        var product = productsMap.get(productID);
-        if (product != null) {
-            productsList.remove(product);
-        }
-        productsMap.remove(productID);
-    }*/
 
     public ArrayList<Product> searchByModel(String model) {
         ArrayList<Product> byModel = new ArrayList<>();

@@ -11,24 +11,25 @@ public class Menu {
                 "For search by model input : 1 \n" +
                 "For search by manufacturer input : 2 \n" +
                 "For search by selling price input : 3 \n" +
-                "For search by purchase price input :  4 \n");
-                /*"For search by             input : 5 \n" +
+                "For search by purchase price input :  4 \n" +
+                "For search by type input : 5" /*+
                 "For search by             input : 6 \n" +
-                "For search by             input : 7 \n" );*/
+                "For search by             input : 7 \n" */);
 
         int choice = scanner.nextInt();
         switch (choice) {
             case 1: {
                 System.out.println("What model do you want to search?");
                 String model = scanner.next();
+
                 ArrayList<Product> byModel = warehouse.searchByModel(model);
                 if (byModel.size() == 0) {
                     System.out.println("This model is not present in the warehouse");
                 } else {
                     System.out.println(byModel);
                 }
-                break;
             }
+            break;
             case 2: {
                 System.out.println("What manufacturer do you want to search?");
                 String manufacturer = scanner.next();
@@ -39,8 +40,8 @@ public class Menu {
                 } else {
                     System.out.println(byManufacturer);
                 }
-                break;
             }
+            break;
             case 3: {
                 System.out.println("Do you want the price in ascending or descending order  \n" +
                         "For ascending order input : 1 \n" +
@@ -57,8 +58,8 @@ public class Menu {
                         System.out.println(bySellingPrice);
                     }
                 }
-                break;
             }
+            break;
             case 4: {
                 System.out.println("Do you want the price in ascending or descending order  \n" +
                         "For ascending order input : 1 \n" +
@@ -75,18 +76,34 @@ public class Menu {
                         System.out.println(byPurchasePrice);
                     }
                 }
-                break;
             }
+            break;
+            case 5: {
+                System.out.println("What type of product are you looking for: ");
+                String type = scanner.next().toUpperCase();
+                boolean isValidType = ProductType.isAcceptedProductType(type); //we check if this type is valid
+                if(isValidType) {
+                    var productsByType = warehouse.searchByType(ProductType.valueOf(type));
+                    if (productsByType.isEmpty()) {
+                        System.out.println("No products of type " + type);
 
-            /*case 5: {
-            break;
+                    }
+
+                    System.out.println("Products of type: " + type);
+                    for (var values : productsByType) {
+                        System.out.println(values);
+                    }
+                } else {
+                    System.out.println("There is no type named \"" + type + "\".");
+                }
             }
-            case 6: {
             break;
+            /*case 6: {
             }
+            break;
             case 7: {
-            break;
-            }*/
+            }
+            break;*/
             default: {
                 System.out.println("Error: input not present in the system.");
             }
