@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Smartphone implements Product {
 
-    private String productor;
+    private String manufacturer;
     private String model;
     private String description;
     private float display;
@@ -13,7 +13,7 @@ public class Smartphone implements Product {
     private float sellingPrice;
     private int id;
 
-    public Smartphone(String productor,
+    public Smartphone(String manufacturer,
                       String model,
                       String description,
                       float display,
@@ -21,7 +21,7 @@ public class Smartphone implements Product {
                       float purchasePrice,
                       float sellingPrice,
                       int id) {
-        this.productor = productor;
+        this.manufacturer = manufacturer;
         this.model = model;
         this.description = description;
         this.display = display;
@@ -31,12 +31,13 @@ public class Smartphone implements Product {
         this.id = id;
     }
 
-    public String getProductor() {
-        return productor;
+
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    public void setProductor(String productor) {
-        this.productor = productor;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public String getModel() {
@@ -98,7 +99,7 @@ public class Smartphone implements Product {
     @Override
     public String toString() {
         return "Smartphone{" +
-                ", productor='" + productor + '\'' +
+                ", manufacturer='" + manufacturer+ '\'' +
                 ", model='" + model + '\'' +
                 ", description='" + description + '\'' +
                 ", display=" + display +
@@ -107,61 +108,6 @@ public class Smartphone implements Product {
                 ", sellingPrice=" + sellingPrice +
                 ", id=" + id +
                 '}';
-    }
-
-
-    public void searchByModel(List<Product> list) {
-        List<Product> byModel = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("You've entered search by model. Please enter what model are you interested in");
-        String model = scanner.nextLine();
-        for (Product element : list) {
-            if (element.getModel().equals(model)) {
-                byModel.add(element);
-            }
-        }
-        System.out.println(byModel);
-    }
-
-
-    public void searchByProductor(List<Product> list) {
-        List<Product> byProductor = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
-        String productor = scanner.nextLine();
-        for (Product element : list) {
-            if (element.getProductor().equals(productor)) {
-                byProductor.add(element);
-            }
-        }
-        System.out.println(byProductor);
-    }
-
-
-    public void searchBySellingPrice(List<Product> list) {
-        List<Product> bySellingPrice = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
-        int sellingPrice = scanner.nextInt();
-        for (Product element : list) {
-            if (element.getSellingPrice() == (sellingPrice)) {
-                bySellingPrice.add(element);
-            }
-        }
-        System.out.println(bySellingPrice);
-    }
-
-    public void searchByPurchasePrice(List<Product> list) {
-        List<Product> byPurchasePrice = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
-        int purchasePrice = scanner.nextInt();
-        for (Product element : list) {
-            if (element.getPurchasePrice() == (purchasePrice)) {
-                byPurchasePrice.add(element);
-            }
-        }
-        System.out.println(byPurchasePrice);
     }
 }
 
