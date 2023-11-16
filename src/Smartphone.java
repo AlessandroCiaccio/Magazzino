@@ -99,7 +99,7 @@ public class Smartphone implements Product {
     @Override
     public String toString() {
         return "Smartphone{" +
-                ", manufacturer='" + manufacturer+ '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
                 ", description='" + description + '\'' +
                 ", display=" + display +

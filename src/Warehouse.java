@@ -71,7 +71,6 @@ public class Warehouse {
 
     public ArrayList<Product> searchByModel(String model) {
         ArrayList<Product> byModel = new ArrayList<>();
-        System.out.println("You've entered search by model. Please enter what model are you interested in");
         for (Product element : productsMap.values()) {
             if (element.getModel().equals(model)) {
                 byModel.add(element);
@@ -82,7 +81,6 @@ public class Warehouse {
 
     public ArrayList<Product> searchByManufacturer(String manufacturer) {
         ArrayList<Product> byManufacturer = new ArrayList<>();
-        System.out.println("You've entered search by manufacturer. Please enter what manufacturer are you interested in");
         for (Product element : productsMap.values()) {
             if (element.getManufacturer().equals(manufacturer)) {
                 byManufacturer.add(element);
@@ -93,7 +91,6 @@ public class Warehouse {
 
     public ArrayList<Product> searchBySellingPrice(int sellingPrice) {
         ArrayList<Product> bySellingPrice = new ArrayList<>();
-        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
         for (Product element : productsMap.values()) {
             if (element.getSellingPrice() == (sellingPrice)) {
                 bySellingPrice.add(element);
@@ -104,7 +101,6 @@ public class Warehouse {
 
     public ArrayList<Product> searchByPurchasePrice(int purchasePrice) {
         ArrayList<Product> byPurchasePrice = new ArrayList<>();
-        System.out.println("You've entered search by productor. Please enter what productor are you interested in");
         for (Product element : productsMap.values()) {
             if (element.getPurchasePrice() == (purchasePrice)) {
                 byPurchasePrice.add(element);

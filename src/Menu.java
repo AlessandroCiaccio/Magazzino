@@ -8,7 +8,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("These are your searchByMethods : \n" +
                 "For search by model input : 1 \n" +
-                "For search by productor input : 2 \n" +
+                "For search by manufacturer input : 2 \n" +
                 "For search by selling price input : 3 \n" +
                 "For search by purchase price input :  4 \n");
         int choice = scanner.nextInt();
