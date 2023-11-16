@@ -96,4 +96,17 @@ public class Tablet implements Product {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Tablet{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", description='" + description + '\'' +
+                ", display=" + display +
+                ", memory=" + memory +
+                ", purchasePrice=" + purchasePrice +
+                ", sellingPrice=" + sellingPrice +
+                ", id=" + id +
+                '}';
+    }
 }

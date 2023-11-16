@@ -96,4 +96,17 @@ public class Notebook implements Product {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Notebook{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", description='" + description + '\'' +
+                ", display=" + display +
+                ", memory=" + memory +
+                ", purchasePrice=" + purchasePrice +
+                ", sellingPrice=" + sellingPrice +
+                ", id=" + id +
+                '}';
+    }
 }

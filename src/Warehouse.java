@@ -5,6 +5,10 @@ public class Warehouse {
     private Map<Integer, Product> productsMap = new HashMap<Integer, Product>();
     private int lastID = 0; //we keep the last id to "generate" product ids when stored
 
+    @Override
+    public String toString() {
+        return "Warehouse{" + "productsMap=" + productsMap + ", lastID=" + lastID + '}';
+    }
 
     public void addProduct(Product product) {
         productsMap.put(lastID, product);
@@ -89,22 +93,29 @@ public class Warehouse {
         return byManufacturer;
     }
 
-    public ArrayList<Product> searchBySellingPrice(int sellingPrice) {
+    public ArrayList<Product> searchBySellingPrice(int order) {
         ArrayList<Product> bySellingPrice = new ArrayList<>();
         for (Product element : productsMap.values()) {
-            if (element.getSellingPrice() == (sellingPrice)) {
-                bySellingPrice.add(element);
-            }
+            bySellingPrice.add(element);
+        }
+        if (order == 1) {
+            bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice));
+        } else if (order == 2) {
+            bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
         }
         return bySellingPrice;
     }
 
-    public ArrayList<Product> searchByPurchasePrice(int purchasePrice) {
+
+    public ArrayList<Product> searchByPurchasePrice(int order) {
         ArrayList<Product> byPurchasePrice = new ArrayList<>();
         for (Product element : productsMap.values()) {
-            if (element.getPurchasePrice() == (purchasePrice)) {
-                byPurchasePrice.add(element);
-            }
+            byPurchasePrice.add(element);
+        }
+        if (order == 1) {
+            byPurchasePrice.sort(Comparator.comparing(Product::getSellingPrice));
+        } else if (order == 2) {
+            byPurchasePrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
         }
         return byPurchasePrice;
     }
