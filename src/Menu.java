@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Menu {
     private Warehouse warehouse = new Warehouse();
 
+    // If you're adding a search method add the proper information in the lines below
     public void searchBy() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("These are your searchByMethods : \n" +
@@ -11,6 +12,10 @@ public class Menu {
                 "For search by manufacturer input : 2 \n" +
                 "For search by selling price input : 3 \n" +
                 "For search by purchase price input :  4 \n");
+                /*"For search by             input : 5 \n" +
+                "For search by             input : 6 \n" +
+                "For search by             input : 7 \n" );*/
+
         int choice = scanner.nextInt();
         switch (choice) {
             case 1: {
@@ -58,10 +63,14 @@ public class Menu {
                     System.out.println(byPurchasePrice);
                 }
             }
-            case 5: {
+            /*case 5: {
             }
+            case 6: {
+            }
+            case 7: {
+            }*/
             default: {
-
+                System.out.println("Error: input not present in the system.");
             }
         }
     }
