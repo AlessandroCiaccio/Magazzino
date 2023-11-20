@@ -12,7 +12,7 @@ public class Menu {
                 "For search by manufacturer input : 2 \n" +
                 "For search by selling price input : 3 \n" +
                 "For search by purchase price input :  4 \n" +
-                "For search by type input : 5" /*+
+                "For search by type input : 5 \n "/* +
                 "For search by             input : 6 \n" +
                 "For search by             input : 7 \n" */);
 
