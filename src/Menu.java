@@ -82,7 +82,7 @@ public class Menu {
                 System.out.println("What type of product are you looking for: ");
                 String type = scanner.next().toUpperCase();
                 boolean isValidType = ProductType.isAcceptedProductType(type); //we check if this type is valid
-                if(isValidType) {
+                if (isValidType) {
                     var productsByType = warehouse.searchByType(ProductType.valueOf(type));
                     if (productsByType.isEmpty()) {
                         System.out.println("No products of type " + type);
