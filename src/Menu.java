@@ -113,9 +113,9 @@ public class Menu {
                     break;
                 }
                 case 9: {
-                    cart=null;
+                    cart = null;
                     System.gc();
-                    cart=new Cart();
+                    cart = new Cart();
                     break;
                 }
 
@@ -125,7 +125,7 @@ public class Menu {
                 break;
             }
             System.out.println("\nTo close input 0, otherwise press any key");
-            again= scanner.next();
+            again = scanner.next();
         }
         while (again != "0");
     }

@@ -16,7 +16,7 @@ public class Warehouse {
         ++lastID;
     }
 
-    public Product getProductByID(int id){
+    public Product getProductByID(int id) {
         return productsMap.get(id);
     }
 
@@ -32,7 +32,7 @@ public class Warehouse {
         }
     }
 
-    static <M,N> Integer countObjects(N obj, Map<M,N> map) {
+    static <M, N> Integer countObjects(N obj, Map<M, N> map) {
         int count = 0;
         for (var element : map.values()) {
             if (obj.equals(element)) { //two products, with different ids but same model etc will add to the quantity
@@ -47,7 +47,7 @@ public class Warehouse {
         return countObjects(product, productsMap);
     }
 
-   public void deleteProductById(int productID) {
+    public void deleteProductById(int productID) {
         var product = productsMap.get(productID);
         if (product == null) {
             System.out.println("Product not found");
