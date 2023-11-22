@@ -1,8 +1,6 @@
 public enum ProductType {
 
-    NOTEBOOK("Notebook"),
-    SMARTPHONE("Smartphone"),
-    TABLET("Tablet");
+    NOTEBOOK("Notebook"), SMARTPHONE("Smartphone"), TABLET("Tablet");
 
     private String type;
 
@@ -10,17 +8,17 @@ public enum ProductType {
         this.type = a;
     }
 
-    public static boolean isAcceptedProductType(String str){
-        try{
+    public static boolean isAcceptedProductType(String str) {
+        try {
             ProductType.valueOf(str);
-        } catch(Exception e){
+        } catch (Exception e) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return type;
     }
 }

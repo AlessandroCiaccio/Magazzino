@@ -15,13 +15,7 @@ public class Notebook implements Product {
     ProductType type;
 
 
-    public Notebook(String manufacturer,
-                    String model,
-                    String description,
-                    float display,
-                    float memory,
-                    float purchasePrice,
-                    float sellingPrice) {
+    public Notebook(String manufacturer, String model, String description, float display, float memory, float purchasePrice, float sellingPrice) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.description = description;
@@ -36,22 +30,27 @@ public class Notebook implements Product {
     public String getManufacturer() {
         return manufacturer;
     }
+
     @Override
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
+
     @Override
     public String getModel() {
         return model;
     }
+
     @Override
     public void setModel(String model) {
         this.model = model;
     }
+
     @Override
     public String getDescription() {
         return description;
     }
+
     @Override
     public void setDescription(String description) {
         this.description = description;
@@ -105,17 +104,7 @@ public class Notebook implements Product {
 
     @Override
     public String toString() {
-        return "Notebook{" +
-                "manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", description='" + description + '\'' +
-                ", display=" + display +
-                ", memory=" + memory +
-                ", purchasePrice=" + purchasePrice +
-                ", sellingPrice=" + sellingPrice +
-                ", ID=" + ID +
-                ", type=" + type +
-                '}';
+        return "Notebook{" + "manufacturer='" + manufacturer + '\'' + ", model='" + model + '\'' + ", description='" + description + '\'' + ", display=" + display + ", memory=" + memory + ", purchasePrice=" + purchasePrice + ", sellingPrice=" + sellingPrice + ", ID=" + ID + ", type=" + type + '}';
     }
 
     @Override

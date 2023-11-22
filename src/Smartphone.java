@@ -15,13 +15,7 @@ public class Smartphone implements Product {
     private int ID;
     ProductType type;
 
-    public Smartphone(String manufacturer,
-                      String model,
-                      String description,
-                      float display,
-                      float memory,
-                      float purchasePrice,
-                      float sellingPrice) {
+    public Smartphone(String manufacturer, String model, String description, float display, float memory, float purchasePrice, float sellingPrice) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.description = description;
@@ -110,16 +104,7 @@ public class Smartphone implements Product {
 
     @Override
     public String toString() {
-        return "Smartphone{" +
-                "manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", description='" + description + '\'' +
-                ", display=" + display +
-                ", memory=" + memory +
-                ", purchasePrice=" + purchasePrice +
-                ", sellingPrice=" + sellingPrice +
-                ", ID=" + ID +
-                '}';
+        return "Smartphone{" + "manufacturer='" + manufacturer + '\'' + ", model='" + model + '\'' + ", description='" + description + '\'' + ", display=" + display + ", memory=" + memory + ", purchasePrice=" + purchasePrice + ", sellingPrice=" + sellingPrice + ", ID=" + ID + '}';
     }
 
     @Override
