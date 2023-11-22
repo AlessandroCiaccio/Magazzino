@@ -2,6 +2,7 @@ public class Main {
     public static void main(String[] args) {
         Menu menu = new Menu();
         Warehouse warehouse = new Warehouse();
+        Cart cart = new Cart();
         Smartphone smartphone1 = new Smartphone(
                 "Apple",
                 "iPhone15",
@@ -39,7 +40,7 @@ public class Main {
         warehouse.addProduct(smartphone2);
         warehouse.addProduct(tablet1);
         warehouse.addProduct(notebook1);
-        Cart cart = new Cart();
+
         cart.addProduct(smartphone1);
         cart.addProduct(notebook1);
         menu.searchBy(warehouse, cart);
