@@ -41,8 +41,7 @@ public class Main {
         warehouse.addProduct(tablet1);
         warehouse.addProduct(notebook1);
 
-        cart.addProduct(smartphone1);
-        cart.addProduct(notebook1);
+
         menu.searchBy(warehouse, cart);
     }
 }

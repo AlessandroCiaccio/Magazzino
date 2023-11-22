@@ -18,7 +18,7 @@ public class Menu {
                 "For search by             input : 6 \n" +
                 "For search by             input : 7 \n" */ +
                     "To see the total of the cart input : 8 \n" +
-                    "To confirm the purchase : 9");
+                    "To confirm the purchase input  : 9");
 
             int choice = scanner.nextInt();
             switch (choice) {
