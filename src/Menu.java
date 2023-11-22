@@ -5,16 +5,18 @@ public class Menu {
     private Warehouse warehouse = new Warehouse();
 
     // If you're adding a search method add the proper information in the lines below
-    public void searchBy(Warehouse warehouse) {
+    public void searchBy(Warehouse warehouse, Cart cart) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("These are your searchByMethods : \n" +
+        System.out.println("Menù : \n" +
                 "For search by model input : 1 \n" +
                 "For search by manufacturer input : 2 \n" +
                 "For search by selling price input : 3 \n" +
                 "For search by purchase price input :  4 \n" +
-                "For search by type input : 5" /*+
+                "For search by type input : 5 \n"/*+
                 "For search by             input : 6 \n" +
-                "For search by             input : 7 \n" */);
+                "For search by             input : 7 \n" */ +
+                "To see the total of the cart input : 8 \n" /*+
+                "To confirm the purchase : 9"*/);
 
         int choice = scanner.nextInt();
         switch (choice) {
@@ -82,7 +84,7 @@ public class Menu {
                 System.out.println("What type of product are you looking for: ");
                 String type = scanner.next().toUpperCase();
                 boolean isValidType = ProductType.isAcceptedProductType(type); //we check if this type is valid
-                if(isValidType) {
+                if (isValidType) {
                     var productsByType = warehouse.searchByType(ProductType.valueOf(type));
                     if (productsByType.isEmpty()) {
                         System.out.println("No products of type " + type);
@@ -99,11 +101,19 @@ public class Menu {
             }
             break;
             /*case 6: {
-            }
             break;
-            case 7: {
             }
-            break;*/
+            case 7: {
+            break;
+            }*/
+            case 8: {
+                System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
+                break;
+            }/*
+            case 9: {
+            break;
+            }
+            */
             default: {
                 System.out.println("Error: input not present in the system.");
             }

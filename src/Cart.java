@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Carrello {
+public class Cart {
     private List<Product> products;
 
-    public Carrello() {
+    public Cart() {
         this.products = new ArrayList<>();
     }
 
