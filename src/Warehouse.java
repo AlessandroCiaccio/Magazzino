@@ -114,13 +114,24 @@ public class Warehouse {
         return byPurchasePrice;
     }
 
-    public ArrayList<Product> searchByPriceRange(int priceMin, int priceMax) {
+    public ArrayList<Product> searchByPurchasePriceRange(int priceMin, int priceMax) {
         ArrayList<Product> byPriceRange = new ArrayList<>();
         for (Product element : productsMap.values()) {
             if (element.getPurchasePrice() >= priceMin && element.getPurchasePrice() <= priceMax) {
                 byPriceRange.add(element);
             }
             byPriceRange.sort(Comparator.comparing(Product::getPurchasePrice));
+        }
+        return byPriceRange;
+    }
+
+    public ArrayList<Product> searchBySellingPriceRange(int priceMin, int priceMax) {
+        ArrayList<Product> byPriceRange = new ArrayList<>();
+        for (Product element : productsMap.values()) {
+            if (element.getSellingPrice() >= priceMin && element.getSellingPrice() <= priceMax) {
+                byPriceRange.add(element);
+            }
+            byPriceRange.sort(Comparator.comparing(Product::getSellingPrice));
         }
         return byPriceRange;
     }
