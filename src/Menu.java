@@ -28,7 +28,6 @@ public class Menu {
                 case 1 -> {
                     System.out.println("What model do you want to search?");
                     String model = scanner.next();
-
                     ArrayList<Product> byModel = warehouse.searchByModel(model);
                     if (byModel.size() == 0) {
                         System.out.println("This model is not present in the warehouse");
@@ -39,7 +38,6 @@ public class Menu {
                 case 2 -> {
                     System.out.println("What manufacturer do you want to search?");
                     String manufacturer = scanner.next();
-                    warehouse.searchByManufacturer(manufacturer);
                     ArrayList<Product> byManufacturer = warehouse.searchByManufacturer(manufacturer);
                     if (byManufacturer.size() == 0) {
                         System.out.println("This manufacturer is not present in the warehouse");
@@ -56,7 +54,6 @@ public class Menu {
                     if (order != 1 && order != 2) {
                         System.out.println("Wrong input");
                     } else {
-                        warehouse.searchBySellingPrice(order);
                         ArrayList<Product> bySellingPrice = warehouse.searchBySellingPrice(order);
                         if (bySellingPrice.size() == 0) {
                             System.out.println("This selling price is not present in the warehouse");
@@ -74,7 +71,7 @@ public class Menu {
                     if (order != 1 && order != 2) {
                         System.out.println("Wrong input");
                     } else {
-                        warehouse.searchByPurchasePrice(order);
+
                         ArrayList<Product> byPurchasePrice = warehouse.searchBySellingPrice(order);
                         if (byPurchasePrice.size() == 0) {
                             System.out.println("This purchase price is not present in the warehouse");
@@ -128,7 +125,7 @@ public class Menu {
                         int priceMin = scanner.nextInt();
                         System.out.println("Insert the higher price of the price range");
                         int priceMax = scanner.nextInt();
-                        ArrayList byPriceRange = warehouse.searchBySellingPriceRange(priceMin, priceMax);
+                        ArrayList<Product> byPriceRange = warehouse.searchBySellingPriceRange(priceMin, priceMax);
                         if (byPriceRange.size() == 0) {
                             System.out.println("This selling price is not present in the warehouse");
                         } else {
