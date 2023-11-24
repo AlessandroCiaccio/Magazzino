@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Menu {
@@ -10,8 +11,8 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         do {
             /*+
-                "For search by             input : 6 \n" +
-                "For search by             input : 7 \n" */
+                "For search by             input : 6 \n" +*/
+
             System.out.println("""
                                  MENU'\s
                     For search by model input : 1\s
@@ -19,6 +20,7 @@ public class Menu {
                     For search by selling price input : 3\s
                     For search by purchase price input :  4\s
                     For search by type input : 5\s
+                    "For search by price range input : 7\s
                     To see the total of the cart input : 8\s
                     To confirm the purchase input  : 9""");
 
@@ -100,11 +102,16 @@ public class Menu {
                         System.out.println("There is no type named \"" + type + "\".");
                     }
                 }
-
             /*case 6-> {
-            }
-            case 7 -> {
             }*/
+                case 7 -> {
+                    System.out.println("Insert the lower price of the price range");
+                    int priceMin = scanner.nextInt();
+                    System.out.println("Insert the higher price of the price range");
+                    int priceMax = scanner.nextInt();
+                    ArrayList<Product> byPriceRange = warehouse.searchByPriceRange(priceMin, priceMax);
+                    System.out.println(byPriceRange);
+                }
                 case 8 -> {
                     System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
                 }

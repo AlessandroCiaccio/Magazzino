@@ -113,4 +113,17 @@ public class Warehouse {
         }
         return byPurchasePrice;
     }
+
+    public ArrayList<Product> searchByPriceRange(int priceMin, int priceMax) {
+        ArrayList<Product> byPriceRange = new ArrayList<>();
+        for (Product element : productsMap.values()) {
+            if (element.getPurchasePrice() >= priceMin && element.getPurchasePrice() <= priceMax) {
+                byPriceRange.add(element);
+            }
+            byPriceRange.sort(Comparator.comparing(Product::getPurchasePrice));
+        }
+        return byPriceRange;
+    }
 }
+
+
