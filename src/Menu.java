@@ -65,9 +65,10 @@ public class Menu {
                     }
                 }
                 case 4 -> {
-                    System.out.println("Do you want the price in ascending or descending order  \n" +
-                            "For ascending order input : 1 \n" +
-                            "For descending order input : 2 ");
+                    System.out.println("""
+                            Do you want the price in ascending or descending order \s
+                            For ascending order input : 1\s
+                            For descending order input : 2\s""");
                     int order = scanner.nextInt();
                     if (order != 1 && order != 2) {
                         System.out.println("Wrong input");
@@ -100,11 +101,9 @@ public class Menu {
                     }
                 }
 
-            /*case 6: {
-            break;
+            /*case 6-> {
             }
-            case 7: {
-            break;
+            case 7 -> {
             }*/
                 case 8 -> {
                     System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
