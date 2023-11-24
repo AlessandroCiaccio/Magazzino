@@ -3,7 +3,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
-    private Warehouse warehouse = new Warehouse();
 
     // If you're adding a search method add the proper information in the lines below
     public void searchBy(Warehouse warehouse, Cart cart) {
