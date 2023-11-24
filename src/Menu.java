@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
@@ -6,8 +7,8 @@ public class Menu {
 
     // If you're adding a search method add the proper information in the lines below
     public void searchBy(Warehouse warehouse, Cart cart) {
-        String again = null;
         Scanner scanner = new Scanner(System.in);
+        String again;
         do {
             /*+
                 "For search by             input : 6 \n" +*/
@@ -133,20 +134,16 @@ public class Menu {
                         }
                     }
                 }
-                case 8 -> {
-                    System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
-                }
+                case 8 -> System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
                 case 9 -> {
                     cart = null;
                     System.gc();
                     cart = new Cart();
                 }
-                default -> {
-                    System.out.println("Error: input not present in the system.");
-                }
+                default -> System.out.println("Error: input not present in the system.");
             }
-            System.out.println("\nTo close input 0, otherwise press any key");
+            System.out.println("\nTo close the menu input 0, otherwise press any key");
             again = scanner.next();
-        } while (again != "0");
+        } while (!Objects.equals(again, "0"));
     }
 }
