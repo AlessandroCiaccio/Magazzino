@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
         Menu menu = new Menu();
         Warehouse warehouse = new Warehouse();
-        Cart cart = new Cart();
+        Cart cart = new Cart(warehouse);
         Smartphone smartphone1 = new Smartphone(
                 "Apple",
                 "iPhone15",
@@ -35,7 +35,6 @@ public class Main {
                 1024,
                 1400,
                 2000);
-
         warehouse.addProduct(smartphone1);
         warehouse.addProduct(smartphone2);
         warehouse.addProduct(tablet1);

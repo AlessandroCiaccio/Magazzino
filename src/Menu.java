@@ -9,22 +9,20 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         String again;
         do {
-            /*+ "Print all products input : 0\n
-                "For search by             input : 6 \n" +
-                "Add to cart and remove from warehouse input : 8\n
-                "Add to warehouse and remove from cart input : 9*/
-
             System.out.println("""
                                   MENU'\s
-                    To print all products input : 0\s          
-                    To search by model input : 1\s
-                    To search by manufacturer input : 2\s
-                    To search by selling price input : 3\s
-                    To search by purchase price input :  4\s
-                    To search by type input : 5\s
-                    To search by price range input : 7\s
-                    To see the total of the cart input : 10\s
-                    To confirm the purchase input  : 11""");
+                    0:  To print all products in the store\s          
+                    1:  To search by model\s
+                    2:  To search by manufacturer\s
+                    3:  To search by selling price\s
+                    4:  To search by purchase price\s
+                    5:  To search by type\s
+                    6:  To search by price range\s
+                    7:  To add to cart\s
+                    8:  To remove from cart\s 
+                    9:  To print the products in the cart\s
+                    10: To see the total of the cart\s
+                    11: To confirm the purchase""");
 
             int choice = scanner.nextInt();
             switch (choice) {
@@ -104,9 +102,7 @@ public class Menu {
                         System.out.println("There is no type named \"" + type + "\".");
                     }
                 }
-            /*case 6-> {
-            }*/
-                case 7 -> {
+                case 6 -> {
                     System.out.println("""
                             What price range do you want to search for\s
                             To search for purchase price input : 0
@@ -139,12 +135,25 @@ public class Menu {
                         }
                     }
                 }
+                case 7 -> {
+                    System.out.println("Input the id of the product that you want to add : ");
+                    int idToAdd = scanner.nextInt();
+                    cart.addToCart(idToAdd);
+                }
+                case 8 -> {
+                    System.out.println("Input the id of the product that you want to remove : ");
+                    int idToRemove = scanner.nextInt();
+                    cart.removeFromCart(idToRemove);
+                }
+                case 9 -> {
+                    cart.printProducts();
+                }
                 case 10 ->
                         System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
                 case 11 -> {
                     cart = null;
                     System.gc();
-                    cart = new Cart();
+                    cart = new Cart(warehouse);
                 }
                 default -> System.out.println("Error: input not present in the system.");
             }

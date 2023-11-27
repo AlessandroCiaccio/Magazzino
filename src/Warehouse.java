@@ -15,6 +15,9 @@ public class Warehouse {
         product.setID(lastID);
         ++lastID;
     }
+    public void addProductFromCart(Product product) {
+        productsMap.put(product.getID(), product);
+    }
 
     public Product getProductByID(int id) {
         return productsMap.get(id);
@@ -134,6 +137,9 @@ public class Warehouse {
             byPriceRange.sort(Comparator.comparing(Product::getSellingPrice));
         }
         return byPriceRange;
+    }
+    public Map<Integer, Product> returnMap(){
+        return productsMap;
     }
 }
 
