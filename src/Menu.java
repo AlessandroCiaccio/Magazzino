@@ -9,22 +9,28 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         String again;
         do {
-            /*+
-                "For search by             input : 6 \n" +*/
+            /*+ "Print all products input : 0\n
+                "For search by             input : 6 \n" +
+                "Add to cart and remove from warehouse input : 8\n
+                "Add to warehouse and remove from cart input : 9*/
 
             System.out.println("""
                                   MENU'\s
+                    To print all products input : 0\s          
                     To search by model input : 1\s
                     To search by manufacturer input : 2\s
                     To search by selling price input : 3\s
                     To search by purchase price input :  4\s
                     To search by type input : 5\s
                     To search by price range input : 7\s
-                    To see the total of the cart input : 8\s
-                    To confirm the purchase input  : 9""");
+                    To see the total of the cart input : 10\s
+                    To confirm the purchase input  : 11""");
 
             int choice = scanner.nextInt();
             switch (choice) {
+                case 0 -> {
+                    warehouse.printProducts();
+                }
                 case 1 -> {
                     System.out.println("What model do you want to search?");
                     String model = scanner.next();
@@ -133,8 +139,9 @@ public class Menu {
                         }
                     }
                 }
-                case 8 -> System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
-                case 9 -> {
+                case 10 ->
+                        System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
+                case 11 -> {
                     cart = null;
                     System.gc();
                     cart = new Cart();
