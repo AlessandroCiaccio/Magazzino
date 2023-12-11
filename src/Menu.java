@@ -139,6 +139,7 @@ public class Menu {
                     System.out.println("Input the id of the product that you want to add : ");
                     int idToAdd = scanner.nextInt();
                     cart.addToCart(idToAdd);
+                    WarehouseManager.getWarehouse().deleteProductById(idToAdd);
                 }
                 case 8 -> {
                     System.out.println("Input the id of the product that you want to remove : ");
@@ -153,7 +154,7 @@ public class Menu {
                 case 11 -> {
                     cart = null;
                     System.gc();
-                    cart = new Cart(warehouse);
+                    cart = new Cart();
                 }
                 default -> System.out.println("Error: input not present in the system.");
             }

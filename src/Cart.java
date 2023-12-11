@@ -2,11 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-    final Warehouse warehouse;
+
     private List<Product> products;
 
-    public Cart(Warehouse warehouse) {
-        this.warehouse = warehouse;
+    public Cart() {
         this.products = new ArrayList<>();
     }
 
@@ -30,19 +29,17 @@ public class Cart {
         for (Product element : products) {
             if (element.getID() == ID) {
                 products.remove(element);
-                warehouse.addProductFromCart(element);
                 break;
             }
         }
     }
 
     public void addToCart(int ID) {
-        for (Product element : warehouse.returnMap().values()) {
+        for (Product element : WarehouseManager.getWarehouse().returnMap().values()) {
             if (element.getID() == ID) {
                 products.add(element);
             }
         }
-        warehouse.deleteProductById(ID);
     }
 
     public List<Product> getProducts() {
