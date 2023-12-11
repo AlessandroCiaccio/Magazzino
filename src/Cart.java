@@ -35,6 +35,7 @@ public class Cart {
             }
         }
     }
+
     public void addToCart(int ID) {
         for (Product element : warehouse.returnMap().values()) {
             if (element.getID() == ID) {
@@ -43,6 +44,7 @@ public class Cart {
         }
         warehouse.deleteProductById(ID);
     }
+
     public List<Product> getProducts() {
         return this.products;
     }
@@ -65,4 +67,5 @@ public class Cart {
                 "products=" + products +
                 '}';
     }
+
 }
