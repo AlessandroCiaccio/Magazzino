@@ -14,7 +14,9 @@ public class Warehouse {
     }
 
     public void addProduct(Product product) {
-        if (product.getID() == 0) {
+        if (product == null) {
+            return;
+        } else if (product.getID() == 0) {
             productsMap.put(lastID, product);
             product.setID(lastID);
             ++lastID;
@@ -183,7 +185,6 @@ public class Warehouse {
         this.addProduct(smartphone2);
         this.addProduct(notebook1);
         this.addProduct(tablet1);
-
     }
 
     public Map<Integer, Product> returnMap() {

@@ -25,13 +25,15 @@ public class Cart {
         return total;
     }
 
-    public void removeFromCart(int ID) {
+    public Product removeFromCart(int ID) {
         for (Product element : products) {
             if (element.getID() == ID) {
+                Product p = element;
                 products.remove(element);
-                break;
+                return p;
             }
         }
+        return null;
     }
 
     public void addToCart(int ID) {
@@ -60,9 +62,7 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" +
-                "products=" + products +
-                '}';
+        return "Cart{" + "products=" + products + '}';
     }
 
 }

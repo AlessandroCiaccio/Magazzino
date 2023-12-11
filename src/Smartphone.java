@@ -104,7 +104,17 @@ public class Smartphone implements Product {
 
     @Override
     public String toString() {
-        return "Smartphone{" + "manufacturer='" + manufacturer + '\'' + ", model='" + model + '\'' + ", description='" + description + '\'' + ", display=" + display + ", memory=" + memory + ", purchasePrice=" + purchasePrice + ", sellingPrice=" + sellingPrice + ", ID=" + ID + '}';
+        return "Smartphone{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", description='" + description + '\'' +
+                ", display=" + display +
+                ", memory=" + memory +
+                ", purchasePrice=" + purchasePrice +
+                ", sellingPrice=" + sellingPrice +
+                ", ID=" + ID +
+                ", type=" + type +
+                '}';
     }
 
     @Override
