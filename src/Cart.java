@@ -2,11 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-    final Warehouse warehouse;
+
     private List<Product> products;
 
-    public Cart(Warehouse warehouse) {
-        this.warehouse = warehouse;
+    public Cart() {
         this.products = new ArrayList<>();
     }
 
@@ -26,23 +25,23 @@ public class Cart {
         return total;
     }
 
-    public void removeFromCart(int ID) {
+    public Product removeFromCart(int ID) {
         for (Product element : products) {
             if (element.getID() == ID) {
+                Product p = element;
                 products.remove(element);
-                warehouse.addProductFromCart(element);
-                break;
+                return p;
             }
         }
+        return null;
     }
 
     public void addToCart(int ID) {
-        for (Product element : warehouse.returnMap().values()) {
+        for (Product element : WarehouseManager.getWarehouse().returnMap().values()) {
             if (element.getID() == ID) {
                 products.add(element);
             }
         }
-        warehouse.deleteProductById(ID);
     }
 
     public List<Product> getProducts() {
@@ -63,9 +62,7 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" +
-                "products=" + products +
-                '}';
+        return "Cart{" + "products=" + products + '}';
     }
 
 }

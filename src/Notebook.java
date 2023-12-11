@@ -11,7 +11,7 @@ public class Notebook implements Product {
     private float memory;
     private float purchasePrice;
     private float sellingPrice;
-    private int ID;
+    private int ID = 0;
     ProductType type;
 
 
