@@ -1,6 +1,9 @@
 import java.util.*;
 
 public class Warehouse {
+    public Warehouse() {
+        this.productsMap = initialize();
+    }
 
     private Map<Integer, Product> productsMap = new HashMap<Integer, Product>();
     private int lastID = 0; //we keep the last id to "generate" product ids when stored
@@ -15,6 +18,7 @@ public class Warehouse {
         product.setID(lastID);
         ++lastID;
     }
+
     public void addProductFromCart(Product product) {
         productsMap.put(product.getID(), product);
     }
@@ -138,7 +142,52 @@ public class Warehouse {
         }
         return byPriceRange;
     }
-    public Map<Integer, Product> returnMap(){
+    public Map initialize(){
+        Map<Integer, Product> productsMap = new HashMap<>();
+        Smartphone smartphone1 = new Smartphone(
+                "Apple",
+                "iPhone15",
+                "None",
+                15,
+                128,
+                200,
+                300);
+        smartphone1.setID(1);
+        Smartphone smartphone2 = new Smartphone(
+                "Samsung",
+                "Galaxy S23",
+                "none",
+                11,
+                128,
+                100,
+                500);
+        smartphone2.setID(2);
+        Tablet tablet1 = new Tablet(
+                "Apple",
+                "iPad Pro",
+                "none",
+                12.9F,
+                256,
+                300,
+                1200);
+        tablet1.setID(3);
+        Notebook notebook1 = new Notebook(
+                "Lenovo",
+                "Legion 5 Pro",
+                "none",
+                16,
+                1024,
+                1400,
+                2000);
+        notebook1.setID(4);
+        productsMap.put(1,smartphone1);
+        productsMap.put(2,smartphone2);
+        productsMap.put(3,tablet1);
+        productsMap.put(4,notebook1);
+        return productsMap;
+    }
+
+    public Map<Integer, Product> returnMap() {
         return productsMap;
     }
 }
