@@ -13,15 +13,17 @@ public class Warehouse {
         return "Warehouse{" + "productsMap=" + productsMap + ", lastID=" + lastID + '}';
     }
 
-    public void addProduct(Product product) {
+    public Boolean addProduct(Product product) {
         if (product == null) {
-            return;
+            return false;
         } else if (product.getID() == 0) {
             productsMap.put(lastID, product);
             product.setID(lastID);
             ++lastID;
+            return true;
         } else {
             productsMap.put(product.getID(), product);
+            return true;
         }
     }
 
