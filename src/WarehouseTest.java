@@ -48,4 +48,27 @@ public class WarehouseTest {
         
         Assert.assertFalse(isDifferentType);
     }
+
+    @Test
+    public void checkIfListReturnedBySearchByModelIsNull(){
+        Warehouse warehouse = new Warehouse();
+        ArrayList<Product> resultList = warehouse.searchByModel("Apple");
+        Assert.assertNotNull(resultList);
+    }
+
+    @Test
+    public void checkIfListReturnedBySearchByModelIsNull2(){
+        Warehouse warehouse = new Warehouse();
+        ArrayList<Product> resultList = warehouse.searchByModel(null);
+        Assert.assertNotNull(resultList);
+    }
+
+    @Test
+    public void checkIfListReturnedBySearchByModelIsNull3(){
+        Warehouse warehouse = new Warehouse();
+        ArrayList<Product> resultList = warehouse.searchByModel(null);
+        Assert.assertNotNull(resultList);
+        Assert.assertTrue(resultList.isEmpty());
+    }
+
 }
