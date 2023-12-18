@@ -50,21 +50,21 @@ public class WarehouseTest {
     }
 
     @Test
-    public void checkIfListReturnedBySearchByModelIsNull(){
+    public void checkIfListReturnedBySearchByModelIsNotNull(){
         Warehouse warehouse = new Warehouse();
         ArrayList<Product> resultList = warehouse.searchByModel("Apple");
         Assert.assertNotNull(resultList);
     }
 
     @Test
-    public void checkIfListReturnedBySearchByModelIsNull2(){
+    public void checkIfListReturnedBySearchByModelIsNullWithInputNull(){
         Warehouse warehouse = new Warehouse();
         ArrayList<Product> resultList = warehouse.searchByModel(null);
         Assert.assertNotNull(resultList);
     }
 
     @Test
-    public void checkIfListReturnedBySearchByModelIsNull3(){
+    public void checkIfListReturnedBySearchByModelIsEmpty(){
         Warehouse warehouse = new Warehouse();
         ArrayList<Product> resultList = warehouse.searchByModel(null);
         Assert.assertNotNull(resultList);
