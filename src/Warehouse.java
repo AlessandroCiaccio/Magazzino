@@ -1,22 +1,36 @@
 import java.util.*;
 
 public class Warehouse {
+    public Warehouse() {
+        initialize();
+    }
 
     private Map<Integer, Product> productsMap = new HashMap<Integer, Product>();
-    private int lastID = 0; //we keep the last id to "generate" product ids when stored
+    private int lastID = 1; //we keep the last id to "generate" product ids when stored
 
     @Override
     public String toString() {
         return "Warehouse{" + "productsMap=" + productsMap + ", lastID=" + lastID + '}';
     }
 
-    public void addProduct(Product product) {
-        productsMap.put(lastID, product);
-        product.setID(lastID);
-        ++lastID;
+    //TODO delete getid() == 0 logic
+    // replace map with list
+    // add addQuantity logic (quantity as a member of product class)
+    public Boolean addProduct(Product product) {
+        if (product == null) {
+            return false;
+        } else if (product.getID() == 0) {
+            productsMap.put(lastID, product);
+            product.setID(lastID);
+            ++lastID;
+            return true;
+        } else {
+            productsMap.put(product.getID(), product);
+            return true;
+        }
     }
 
-    public Product getProductByID(int id){
+    public Product getProductByID(int id) {
         return productsMap.get(id);
     }
 
@@ -32,7 +46,7 @@ public class Warehouse {
         }
     }
 
-    static <M,N> Integer countObjects(N obj, Map<M,N> map) {
+    static <M, N> Integer countObjects(N obj, Map<M, N> map) {
         int count = 0;
         for (var element : map.values()) {
             if (obj.equals(element)) { //two products, with different ids but same model etc will add to the quantity
@@ -47,7 +61,7 @@ public class Warehouse {
         return countObjects(product, productsMap);
     }
 
-   public void deleteProductById(int productID) {
+    public void deleteProductById(int productID) {
         var product = productsMap.get(productID);
         if (product == null) {
             System.out.println("Product not found");
@@ -113,4 +127,74 @@ public class Warehouse {
         }
         return byPurchasePrice;
     }
+
+    public ArrayList<Product> searchByPurchasePriceRange(int priceMin, int priceMax) {
+        ArrayList<Product> byPriceRange = new ArrayList<>();
+        for (Product element : productsMap.values()) {
+            if (element.getPurchasePrice() >= priceMin && element.getPurchasePrice() <= priceMax) {
+                byPriceRange.add(element);
+            }
+            byPriceRange.sort(Comparator.comparing(Product::getPurchasePrice));
+        }
+        return byPriceRange;
+    }
+
+    public ArrayList<Product> searchBySellingPriceRange(int priceMin, int priceMax) {
+        ArrayList<Product> byPriceRange = new ArrayList<>();
+        for (Product element : productsMap.values()) {
+            if (element.getSellingPrice() >= priceMin && element.getSellingPrice() <= priceMax) {
+                byPriceRange.add(element);
+            }
+            byPriceRange.sort(Comparator.comparing(Product::getSellingPrice));
+        }
+        return byPriceRange;
+    }
+
+    private void initialize() {
+        Smartphone smartphone1 = new Smartphone(
+                "Apple",
+                "iPhone15",
+                "None",
+                15,
+                128,
+                200,
+                300);
+        Smartphone smartphone2 = new Smartphone(
+                "Samsung",
+                "Galaxy S23",
+                "none",
+                11,
+                128,
+                100,
+                500);
+
+        Tablet tablet1 = new Tablet(
+                "Apple",
+                "iPad Pro",
+                "none",
+                12.9F,
+                256,
+                300,
+                1200);
+
+        Notebook notebook1 = new Notebook(
+                "Lenovo",
+                "Legion 5 Pro",
+                "none",
+                16,
+                1024,
+                1400,
+                2000);
+
+        this.addProduct(smartphone1);
+        this.addProduct(smartphone2);
+        this.addProduct(notebook1);
+        this.addProduct(tablet1);
+    }
+
+    public Map<Integer, Product> returnMap() {
+        return productsMap;
+    }
 }
+
+

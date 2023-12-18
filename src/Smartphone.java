@@ -15,13 +15,7 @@ public class Smartphone implements Product {
     private int ID;
     ProductType type;
 
-    public Smartphone(String manufacturer,
-                      String model,
-                      String description,
-                      float display,
-                      float memory,
-                      float purchasePrice,
-                      float sellingPrice) {
+    public Smartphone(String manufacturer, String model, String description, float display, float memory, float purchasePrice, float sellingPrice) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.description = description;
@@ -119,6 +113,7 @@ public class Smartphone implements Product {
                 ", purchasePrice=" + purchasePrice +
                 ", sellingPrice=" + sellingPrice +
                 ", ID=" + ID +
+                ", type=" + type +
                 '}';
     }
 

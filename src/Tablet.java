@@ -36,22 +36,27 @@ public class Tablet implements Product {
     public String getManufacturer() {
         return manufacturer;
     }
+
     @Override
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
+
     @Override
     public String getModel() {
         return model;
     }
+
     @Override
     public void setModel(String model) {
         this.model = model;
     }
+
     @Override
     public String getDescription() {
         return description;
     }
+
     @Override
     public void setDescription(String description) {
         this.description = description;
@@ -72,26 +77,32 @@ public class Tablet implements Product {
     public void setMemory(float memory) {
         this.memory = memory;
     }
+
     @Override
     public float getPurchasePrice() {
         return purchasePrice;
     }
+
     @Override
     public void setPurchasePrice(float purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
+
     @Override
     public float getSellingPrice() {
         return sellingPrice;
     }
+
     @Override
     public void setSellingPrice(float sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
+
     @Override
     public int getID() {
         return ID;
     }
+
     @Override
     public void setID(int id) {
         this.ID = id;
@@ -111,6 +122,7 @@ public class Tablet implements Product {
                 ", type=" + type +
                 '}';
     }
+
     @Override
     public ProductType getType() {
         return type;
