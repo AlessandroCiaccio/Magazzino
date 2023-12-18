@@ -13,6 +13,9 @@ public class Warehouse {
         return "Warehouse{" + "productsMap=" + productsMap + ", lastID=" + lastID + '}';
     }
 
+    //TODO delete getid() == 0 logic
+    // replace map with list
+    // add addQuantity logic (quantity as a member of product class)
     public Boolean addProduct(Product product) {
         if (product == null) {
             return false;

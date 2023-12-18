@@ -1,6 +1,6 @@
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
+import org.junit.*;
+
+import java.util.ArrayList;
 
 public class WarehouseTest {
 
@@ -18,11 +18,34 @@ public class WarehouseTest {
         Boolean check = warehouse.addProduct(smartphone1);
         Assert.assertTrue(check);
     }
-@Test
+
+    @Test
     public void ifIAddAProductAndIsNull() {
         Warehouse warehouse = new Warehouse();
         Smartphone smartphone1 = null;
         Boolean check = warehouse.addProduct(smartphone1);
         Assert.assertFalse(check);
+    }
+
+    @Test
+    public void checkIfListReturnedBySearchByTypeIsNotNull() {
+        Warehouse warehouse = new Warehouse();
+        ProductType productType = ProductType.NOTEBOOK;
+        ArrayList<Product> resultList = warehouse.searchByType(productType);
+        Assert.assertNotNull(resultList);
+    }
+
+    @Test
+    public void checkIfListReturnedBySearchByTypeHasCorrectType() {
+        Warehouse warehouse = new Warehouse();
+        ProductType productType = ProductType.NOTEBOOK;
+        ArrayList<Product> resultList = warehouse.searchByType(productType);
+        Boolean isDifferentType = !resultList
+                .stream()
+                .filter(product -> product.getType() != productType)
+                .toList()
+                .isEmpty();
+        
+        Assert.assertFalse(isDifferentType);
     }
 }
