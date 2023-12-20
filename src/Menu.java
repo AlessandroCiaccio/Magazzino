@@ -65,7 +65,12 @@ public class Menu {
                     if (order != 1 && order != 2) {
                         System.out.println("Wrong input");
                     } else {
-                        ArrayList<Product> bySellingPrice = WarehouseManager.getWarehouse().searchBySellingPrice(order);
+                        SortingType type;
+                        if (order == 1) {
+                            type = SortingType.Ascending;
+                        } else
+                            type = SortingType.Descending;
+                        ArrayList<Product> bySellingPrice = WarehouseManager.getWarehouse().searchBySellingPrice(type);
                         if (bySellingPrice.size() == 0) {
                             System.out.println("This selling price is not present in the warehouse");
                         } else {
@@ -82,8 +87,12 @@ public class Menu {
                     if (order != 1 && order != 2) {
                         System.out.println("Wrong input");
                     } else {
-
-                        ArrayList<Product> byPurchasePrice = WarehouseManager.getWarehouse().searchBySellingPrice(order);
+                        SortingType type;
+                        if (order == 1) {
+                            type = SortingType.Ascending;
+                        } else
+                            type = SortingType.Descending;
+                        ArrayList<Product> byPurchasePrice = WarehouseManager.getWarehouse().searchBySellingPrice(type);
                         if (byPurchasePrice.size() == 0) {
                             System.out.println("This purchase price is not present in the warehouse");
                         } else {

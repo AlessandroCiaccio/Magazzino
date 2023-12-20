@@ -1,7 +1,10 @@
-import org.junit.*;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class WarehouseTest {
 
@@ -92,56 +95,74 @@ public class WarehouseTest {
         Assert.assertTrue(resultList.isEmpty());
     }
 
-    @Test @Deprecated
-    public void checkIfList1ReturnedSearchBySellingPriceIsCorrect() {
+    //    @Test @Deprecated
+//    public void checkIfList1ReturnedSearchBySellingPriceIsCorrect() {
+//        Warehouse warehouse = new Warehouse();
+//        ArrayList<Product> resultList = warehouse.searchBySellingPrice(1);
+//        ArrayList<Product> sortedList = new ArrayList<>();
+//        Smartphone smartphone1 = new Smartphone(
+//                "Apple",
+//                "iPhone15",
+//                "None",
+//                15,
+//                128,
+//                200,
+//                300);
+//        smartphone1.setID(1);
+//        Smartphone smartphone2 = new Smartphone(
+//                "Samsung",
+//                "Galaxy S23",
+//                "none",
+//                11,
+//                128,
+//                100,
+//                500);
+//        smartphone2.setID(2);
+//
+//        Tablet tablet1 = new Tablet(
+//                "Apple",
+//                "iPad Pro",
+//                "none",
+//                12.9F,
+//                256,
+//                300,
+//                1200);
+//        tablet1.setID(4);
+//
+//        Notebook notebook1 = new Notebook(
+//                "Lenovo",
+//                "Legion 5 Pro",
+//                "none",
+//                16,
+//                1024,
+//                1400,
+//                2000);
+//        notebook1.setID(3);
+//
+//        sortedList.add(smartphone1);
+//        sortedList.add(smartphone2);
+//        sortedList.add(notebook1);
+//        sortedList.add(tablet1);
+//        sortedList.sort(Comparator.comparing(Product::getSellingPrice));
+//        Assert.assertEquals(resultList, sortedList);
+//    }
+    @Test
+    public void testIfSortingIsAscendingWithAscending() {
         Warehouse warehouse = new Warehouse();
-        ArrayList<Product> resultList = warehouse.searchBySellingPrice(1);
-        ArrayList<Product> sortedList = new ArrayList<>();
-        Smartphone smartphone1 = new Smartphone(
-                "Apple",
-                "iPhone15",
-                "None",
-                15,
-                128,
-                200,
-                300);
-        smartphone1.setID(1);
-        Smartphone smartphone2 = new Smartphone(
-                "Samsung",
-                "Galaxy S23",
-                "none",
-                11,
-                128,
-                100,
-                500);
-        smartphone2.setID(2);
-
-        Tablet tablet1 = new Tablet(
-                "Apple",
-                "iPad Pro",
-                "none",
-                12.9F,
-                256,
-                300,
-                1200);
-        tablet1.setID(4);
-
-        Notebook notebook1 = new Notebook(
-                "Lenovo",
-                "Legion 5 Pro",
-                "none",
-                16,
-                1024,
-                1400,
-                2000);
-        notebook1.setID(3);
-
-        sortedList.add(smartphone1);
-        sortedList.add(smartphone2);
-        sortedList.add(notebook1);
-        sortedList.add(tablet1);
-        sortedList.sort(Comparator.comparing(Product::getSellingPrice));
-        Assert.assertEquals(resultList, sortedList);
+        ArrayList<Product> orderedList = warehouse.searchBySellingPrice(SortingType.Ascending);
+        ArrayList<Product> secondList = new ArrayList<>();
+        secondList.addAll(orderedList);
+        secondList.sort(Comparator.comparing(Product::getSellingPrice));
+        Assert.assertEquals(orderedList, secondList);
     }
 
+    @Test
+    public void testIfSortingIsAscendingWithDescending() {
+        Warehouse warehouse = new Warehouse();
+        ArrayList<Product> orderedList = warehouse.searchBySellingPrice(SortingType.Descending);
+        ArrayList<Product> secondList = new ArrayList<>();
+        secondList.addAll(orderedList);
+        secondList.sort(Comparator.comparing(Product::getSellingPrice).reversed());
+        Assert.assertEquals(orderedList, secondList);
+    }
 }

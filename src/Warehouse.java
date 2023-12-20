@@ -101,15 +101,14 @@ public class Warehouse {
         return byManufacturer;
     }
 
-    public ArrayList<Product> searchBySellingPrice(int order) {
+    public ArrayList<Product> searchBySellingPrice(SortingType type) {
         ArrayList<Product> bySellingPrice = new ArrayList<>();
         for (Product element : productsMap.values()) {
             bySellingPrice.add(element);
         }
-        if (order == 1) {
-            bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice));
-        } else if (order == 2) {
-            bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
+        switch (type) {
+            case Ascending -> bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice));
+            case Descending -> bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
         }
         return bySellingPrice;
     }
