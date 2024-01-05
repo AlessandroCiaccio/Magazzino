@@ -102,10 +102,7 @@ public class Warehouse {
     }
 
     public ArrayList<Product> searchBySellingPrice(SortingType type) {
-        ArrayList<Product> bySellingPrice = new ArrayList<>();
-        for (Product element : productsMap.values()) {
-            bySellingPrice.add(element);
-        }
+        ArrayList<Product> bySellingPrice = new ArrayList<>(productsMap.values());
         switch (type) {
             case Ascending -> bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice));
             case Descending -> bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
@@ -114,15 +111,11 @@ public class Warehouse {
     }
 
 
-    public ArrayList<Product> searchByPurchasePrice(int order) {
-        ArrayList<Product> byPurchasePrice = new ArrayList<>();
-        for (Product element : productsMap.values()) {
-            byPurchasePrice.add(element);
-        }
-        if (order == 1) {
-            byPurchasePrice.sort(Comparator.comparing(Product::getSellingPrice));
-        } else if (order == 2) {
-            byPurchasePrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
+    public ArrayList<Product> searchByPurchasePrice(SortingType type) {
+        ArrayList<Product> byPurchasePrice = new ArrayList<>(productsMap.values());
+        switch (type) {
+            case Ascending -> byPurchasePrice.sort(Comparator.comparing(Product::getSellingPrice));
+            case Descending -> byPurchasePrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
         }
         return byPurchasePrice;
     }

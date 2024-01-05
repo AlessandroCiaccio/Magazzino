@@ -92,7 +92,7 @@ public class Menu {
                             type = SortingType.Ascending;
                         } else
                             type = SortingType.Descending;
-                        ArrayList<Product> byPurchasePrice = WarehouseManager.getWarehouse().searchBySellingPrice(type);
+                        ArrayList<Product> byPurchasePrice = WarehouseManager.getWarehouse().searchByPurchasePrice(type);
                         if (byPurchasePrice.size() == 0) {
                             System.out.println("This purchase price is not present in the warehouse");
                         } else {
