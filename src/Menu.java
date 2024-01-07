@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
 
     // If you're adding a search method add the proper information in the lines below
-    public void searchBy(Cart cart) {
+    public void searchBy(Cart cart) throws Exception {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         do {
@@ -39,21 +40,29 @@ public class Menu {
                     scanner.nextLine(); //flush scanner
                     String model = scanner.nextLine().toString();
                     System.out.println(model);
-                    ArrayList<Product> byModel = WarehouseManager.getWarehouse().searchByModel(model);
-                    if (byModel.size() == 0) {
+                    try {
+                        ArrayList<Product> byModel = WarehouseManager.getWarehouse().searchByModel(model);
+                        if (byModel.isEmpty()) {
+                            System.out.println("This model is not present in the warehouse");
+                        } else {
+                            System.out.println(byModel);
+                        }
+                    } catch (NullPointerException e) {
                         System.out.println("This model is not present in the warehouse");
-                    } else {
-                        System.out.println(byModel);
                     }
                 }
                 case 3 -> {
                     System.out.println("What manufacturer do you want to search?");
                     String manufacturer = scanner.next();
-                    ArrayList<Product> byManufacturer = WarehouseManager.getWarehouse().searchByManufacturer(manufacturer);
-                    if (byManufacturer.size() == 0) {
-                        System.out.println("This manufacturer is not present in the warehouse");
-                    } else {
-                        System.out.println(byManufacturer);
+                    try {
+                        ArrayList<Product> byManufacturer = WarehouseManager.getWarehouse().searchByManufacturer(manufacturer);
+                        if (byManufacturer.size() == 0) {
+                            System.out.println("There are no products from this manufacturer");
+                        } else {
+                            System.out.println(byManufacturer);
+                        }
+                    } catch (NullPointerException e) {
+                        System.out.println("There are no products from this manufacturer");
                     }
                 }
                 case 4 -> {
@@ -74,7 +83,9 @@ public class Menu {
                         if (bySellingPrice.size() == 0) {
                             System.out.println("This selling price is not present in the warehouse");
                         } else {
-                            System.out.println(bySellingPrice);
+                            for (Product elemento : bySellingPrice) {
+                                System.out.println(elemento);
+                            }
                         }
                     }
                 }
@@ -96,7 +107,9 @@ public class Menu {
                         if (byPurchasePrice.size() == 0) {
                             System.out.println("This purchase price is not present in the warehouse");
                         } else {
-                            System.out.println(byPurchasePrice);
+                            for (Product elemento : byPurchasePrice) {
+                                System.out.println(elemento);
+                            }
                         }
                     }
                 }
@@ -136,7 +149,9 @@ public class Menu {
                         if (byPriceRange.size() == 0) {
                             System.out.println("This purchase price is not present in the warehouse");
                         } else {
-                            System.out.println(byPriceRange);
+                            for (Product elemento : byPriceRange) {
+                                System.out.println(elemento);
+                            }
                         }
                     } else {
                         System.out.println("Insert the lower price of the price range");
@@ -147,26 +162,47 @@ public class Menu {
                         if (byPriceRange.size() == 0) {
                             System.out.println("This selling price is not present in the warehouse");
                         } else {
-                            System.out.println(byPriceRange);
+                            for (Product elemento : byPriceRange) {
+                                System.out.println(elemento);
+                            }
                         }
                     }
                 }
                 case 8 -> {
                     System.out.println("Input the id of the product that you want to add : ");
                     int idToAdd = scanner.nextInt();
-                    cart.addToCart(idToAdd);
-                    WarehouseManager.getWarehouse().deleteProductById(idToAdd);
+                    try {
+                        cart.addToCart(idToAdd);
+                        WarehouseManager.getWarehouse().deleteProductById(idToAdd);
+                    } catch (NullPointerException e) {
+                        System.out.println("This product is not present in the warehouse");
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("There are no products with this id in the warehouse");
+                    }
                 }
                 case 9 -> {
                     System.out.println("Input the id of the product that you want to remove : ");
                     int idToRemove = scanner.nextInt();
-                    WarehouseManager.getWarehouse().addProduct(cart.removeFromCart(idToRemove));
+                    try {
+                        WarehouseManager.getWarehouse().addProduct(cart.removeFromCart(idToRemove));
+                        WarehouseManager.getWarehouse().orderingList();
+                    } catch (NullPointerException e) {
+                        System.out.println("This product is not present in the cart");
+                    }
+
                 }
                 case 10 -> {
-                    cart.printProducts();
+                    if (!cart.getProducts().isEmpty()) {
+                        cart.printProducts();
+                    } else
+                        System.out.println("The cart is empty");
                 }
-                case 11 ->
+                case 11 -> {
+                    if (!cart.getProducts().isEmpty()) {
                         System.out.println("The total of the products in the cart is: " + cart.calculateTotalPrice());
+                    } else
+                        System.out.println("The cart is empty");
+                }
                 case 12 -> {
                     cart = null;
                     System.gc();

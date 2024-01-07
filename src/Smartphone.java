@@ -12,7 +12,7 @@ public class Smartphone implements Product {
     private float memory;
     private float purchasePrice;
     private float sellingPrice;
-    private int ID;
+    private Integer ID = null;
     ProductType type;
 
     public Smartphone(String manufacturer, String model, String description, float display, float memory, float purchasePrice, float sellingPrice) {
@@ -93,7 +93,7 @@ public class Smartphone implements Product {
     }
 
     @Override
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
