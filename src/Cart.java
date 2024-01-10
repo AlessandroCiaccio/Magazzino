@@ -30,17 +30,24 @@ public class Cart {
             if (element.getID() == ID) {
                 Product p = element;
                 products.remove(element);
+                System.out.println("The product has been removed from the cart");
                 return p;
             }
         }
+        System.out.println("The product isn't in the cart");
         return null;
     }
 
     public void addToCart(int ID) {
-        for (Product element : WarehouseManager.getWarehouse().returnMap().values()) {
+        for (Product element : WarehouseManager.getWarehouse().returnList()) {
             if (element.getID() == ID) {
                 products.add(element);
+                System.out.println("The product has been added to the cart");
+                return;
             }
+        }
+        if (ID < products.size()) {
+            System.out.println("The product is not in the warehouse at the moment");
         }
     }
 

@@ -11,7 +11,7 @@ public class Notebook implements Product {
     private float memory;
     private float purchasePrice;
     private float sellingPrice;
-    private int ID = 0;
+    private Integer ID = null;
     ProductType type;
 
 
@@ -93,7 +93,7 @@ public class Notebook implements Product {
     }
 
     @Override
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 

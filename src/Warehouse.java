@@ -5,12 +5,12 @@ public class Warehouse {
         initialize();
     }
 
-    private Map<Integer, Product> productsMap = new HashMap<Integer, Product>();
-    private int lastID = 1; //we keep the last id to "generate" product ids when stored
+    private List<Product> productList = new ArrayList<>();
+    private int lastID = 0; //we keep the last id to "generate" product ids when stored
 
     @Override
     public String toString() {
-        return "Warehouse{" + "productsMap=" + productsMap + ", lastID=" + lastID + '}';
+        return "Warehouse{" + "productsList=" + productList + ", lastID=" + lastID + '}';
     }
 
     //TODO delete getid() == 0 logic
@@ -19,33 +19,41 @@ public class Warehouse {
     public Boolean addProduct(Product product) {
         if (product == null) {
             return false;
-        } else if (product.getID() == 0) {
-            productsMap.put(lastID, product);
+        } else if (product.getID() == null) {
+            productList.add(product);
             product.setID(lastID);
             ++lastID;
             return true;
         } else {
-            productsMap.put(product.getID(), product);
+            productList.add(product);
             return true;
         }
     }
 
+    public void orderingList() {
+        productList.sort(Comparator.comparing(Product::getID));
+    }
+
     public Product getProductByID(int id) {
-        return productsMap.get(id);
+        return productList.get(id);
     }
 
     public void printProducts() {
-        if (productsMap.isEmpty()) {
+        if (productList.isEmpty()) {
             System.out.println("No products in storage.");
             return;
         }
 
         System.out.println("Products list:");
-        for (var values : productsMap.values()) {
-            System.out.println(values);
+        for (var values : productList) {
+            if (values == null) {
+            } else {
+                System.out.println(values);
+            }
         }
     }
 
+    @Deprecated
     static <M, N> Integer countObjects(N obj, Map<M, N> map) {
         int count = 0;
         for (var element : map.values()) {
@@ -56,24 +64,39 @@ public class Warehouse {
         return count;
     }
 
-    public int getQuantityByProduct(Product product) {
-        ProductType productType = product.getType();
-        return countObjects(product, productsMap);
+    Integer countObjects(ProductType type) {
+        int count = 0;
+        for (var element : productList) {
+            if (type.equals(element.getType())) {
+                count = count++;
+            }
+        }
+        return count;
     }
 
-    public void deleteProductById(int productID) {
-        var product = productsMap.get(productID);
-        if (product == null) {
-            System.out.println("Product not found");
-            return;
+    public int getQuantityByProduct(Product product) {
+        ProductType productType = product.getType();
+        return countObjects(productType);
+    }
+
+    public void deleteProductById(Integer productID) throws Exception {
+        Integer index = null;
+        for (Product product : productList) {
+            if (Objects.equals(product.getID(), productID)) {
+                index = productList.indexOf(product);
+            }
         }
-        productsMap.remove(productID);
+        try {
+            productList.remove((int) index);
+        } catch (NullPointerException e){
+            System.out.println("The selected ID is invalid");
+        }
     }
 
     public ArrayList<Product> searchByType(ProductType type) //return list and "main" takes care of it?
     {
         var productsByTypeList = new ArrayList<Product>();
-        for (var values : productsMap.values()) {
+        for (var values : productList) {
             if (values.getType() == type) {
                 productsByTypeList.add(values);
             }
@@ -83,7 +106,7 @@ public class Warehouse {
 
     public ArrayList<Product> searchByModel(String model) {
         ArrayList<Product> byModel = new ArrayList<>();
-        for (Product element : productsMap.values()) {
+        for (Product element : productList) {
             if (element.getModel().equals(model)) {
                 byModel.add(element);
             }
@@ -93,7 +116,7 @@ public class Warehouse {
 
     public ArrayList<Product> searchByManufacturer(String manufacturer) {
         ArrayList<Product> byManufacturer = new ArrayList<>();
-        for (Product element : productsMap.values()) {
+        for (Product element : productList) {
             if (element.getManufacturer().equals(manufacturer)) {
                 byManufacturer.add(element);
             }
@@ -102,7 +125,7 @@ public class Warehouse {
     }
 
     public ArrayList<Product> searchBySellingPrice(SortingType type) {
-        ArrayList<Product> bySellingPrice = new ArrayList<>(productsMap.values());
+        ArrayList<Product> bySellingPrice = new ArrayList<>(productList);
         switch (type) {
             case Ascending -> bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice));
             case Descending -> bySellingPrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
@@ -112,17 +135,17 @@ public class Warehouse {
 
 
     public ArrayList<Product> searchByPurchasePrice(SortingType type) {
-        ArrayList<Product> byPurchasePrice = new ArrayList<>(productsMap.values());
+        ArrayList<Product> byPurchasePrice = new ArrayList<>(productList);
         switch (type) {
-            case Ascending -> byPurchasePrice.sort(Comparator.comparing(Product::getSellingPrice));
-            case Descending -> byPurchasePrice.sort(Comparator.comparing(Product::getSellingPrice).reversed());
+            case Ascending -> byPurchasePrice.sort(Comparator.comparing(Product::getPurchasePrice));
+            case Descending -> byPurchasePrice.sort(Comparator.comparing(Product::getPurchasePrice).reversed());
         }
         return byPurchasePrice;
     }
 
     public ArrayList<Product> searchByPurchasePriceRange(int priceMin, int priceMax) {
         ArrayList<Product> byPriceRange = new ArrayList<>();
-        for (Product element : productsMap.values()) {
+        for (Product element : productList) {
             if (element.getPurchasePrice() >= priceMin && element.getPurchasePrice() <= priceMax) {
                 byPriceRange.add(element);
             }
@@ -133,7 +156,7 @@ public class Warehouse {
 
     public ArrayList<Product> searchBySellingPriceRange(int priceMin, int priceMax) {
         ArrayList<Product> byPriceRange = new ArrayList<>();
-        for (Product element : productsMap.values()) {
+        for (Product element : productList) {
             if (element.getSellingPrice() >= priceMin && element.getSellingPrice() <= priceMax) {
                 byPriceRange.add(element);
             }
@@ -184,8 +207,8 @@ public class Warehouse {
         this.addProduct(tablet1);
     }
 
-    public Map<Integer, Product> returnMap() {
-        return productsMap;
+    public List<Product> returnList() {
+        return productList;
     }
 }
 
